@@ -20,13 +20,16 @@ const backgroundLayer5 = new Image();
 backgroundLayer5.src = 'layer-5.png';
 
 let x = 0;
+let x2 = 2400;
 
 function animate(){
     ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
-    ctx.drawImage(backgroundLayer4, x, 0); // Draw the image on the canvas
-    if (x < -1000) x = 0;
+    ctx.drawImage(backgroundLayer4, x, 0);
+    ctx.drawImage(backgroundLayer4, x2, 0); // Draw the image on the canvas
+    if (x < -2400) x = 2400 + x2 - gameSpeed;
     else x -= gameSpeed;
-    x -= gameSpeed;
+    if (x2 < -2400) x2 = 2400 + x - gameSpeed;
+    else x2 -= gameSpeed;
     requestAnimationFrame(animate);
 }
 animate();
